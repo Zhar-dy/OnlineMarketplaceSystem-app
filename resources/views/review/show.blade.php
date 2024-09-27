@@ -35,7 +35,7 @@
                                     <td>{{ $review->comment }}</td>
                                     <td>{{ $review->created_at }}</td>
                                     @if (Auth::user()->role == 'admin')
-                                    <td><form method="POST" action="{{route('review.destroy', $review)}}">
+                                    <td><form method="POST" action="{{route('review.destroy', ['product' => $review->product,$review])}}">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-outline-danger">Delete</button>

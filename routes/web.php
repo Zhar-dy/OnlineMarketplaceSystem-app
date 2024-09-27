@@ -65,7 +65,9 @@ Route::resource('shipping', ShippingController::class);
 //Review Route
 Route::get('/review/show/{product}', [ReviewController::class,'show'])-> name('review.show');
 Route::get('/review/create/{order}', [ReviewController::class,'create'])-> name('review.create');
+Route::delete('/review/destroy/{product}/{review}', [ReviewController::class,'destroy'])-> name('review.destroy');
 Route::resource('review', ReviewController::class)->except([
     'create',
-    'show'
+    'show',
+    'destroy'
 ]);
