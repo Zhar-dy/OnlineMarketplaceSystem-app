@@ -29,9 +29,9 @@ class ReviewController extends Controller
         return redirect()->route('home');
     }
 
-    public function destroy(Review $review)
+    public function destroy(Product $product,Review $review)
     {
         $review->delete();
-        return redirect()->route('review.show');
+        return redirect()->route('review.show',compact('product'));
     }
 }
