@@ -34,6 +34,7 @@
                                     <td>{{ $order->status }}</td>
 
                                     <td>
+                                        <a>{{ $order->user->review->id ?? 'No Review' }}</a>
                                         <div class="btn-group" role="group" aria-label="Basic example">
                                             <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                                                 data-bs-target="#EditOrderModal-{{ $order->id }}">{{ __('Edit Order') }}</button>
@@ -43,7 +44,7 @@
                                                     data-bs-target="#CreatePaymentModal-{{ $order->id }}">{{ __('Pay') }}</button>
                                                 @include('payment.create')
                                             @endif
-                                            @if($order->status == 'Shipped')
+                                            @if($order->status == 'Shipped' )
                                             <a href="{{route('review.create', $order)}}" type="button" class="btn btn-secondary">Review</a>
                                             @endif
                                         </div>
