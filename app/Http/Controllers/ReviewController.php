@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Review;
@@ -10,10 +11,10 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
-    public function show(Product $product)
+    public function show(Product $product, Category $category)
     {
         $reviews = Review::all();
-        return view('review.show',compact('product','reviews'));
+        return view('review.show',compact('product','reviews', 'category'));
     }
     public function create(Order $order){
         return view('review.create', compact('order'));
