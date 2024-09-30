@@ -33,7 +33,8 @@ class CategoryController extends Controller
     }
 
     public function show(Category $category)
-    {$products = Product::all();
-        return view('modal.category.show', compact('category','products'));
+    {
+        $products = Product::all();
+        return view('modal.category.show', compact('category', 'products'));
     }
 }
