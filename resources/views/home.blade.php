@@ -10,14 +10,15 @@
                         <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                             data-bs-target="#CreateCategoryModal">{{ __('Create Category') }}</button>
                         @include('modal.category.create')
-                        <a href="{{route('order.index')}}" class="btn btn-info">View Orders</a>
-                        <a href="{{route('payment.index')}}" type="button" class="btn btn-primary">View Paid Order</a>
+                        <a href="{{ route('order.index') }}" class="btn btn-info">View Orders</a>
+                        <a href="{{ route('payment.index') }}" type="button" class="btn btn-primary">View Paid Order</a>
                         <div class="card mt-3">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
+                                        <th>image</th>
                                         <th scope="col">Description</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -27,6 +28,9 @@
                                         <tr>
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $category->name }}</td>
+                                            <td>
+                                                <img src="{{ asset('storage/workspace/' . $category->attachment) }}" style="width:150px; max-width:150px;" alt="{{ $category->attachment }}">
+                                            </td>
                                             <td>{{ $category->description }}</td>
                                             {{-- <td>
                                             <a href="{{ asset('storage/category/'.$category->attachment) }}" target="_blank">{{ $category->attachment }}</a>
@@ -35,14 +39,16 @@
                                                 <div class="btn-group" role="group" aria-label="Basic example">
                                                     <a href="{{ route('category.show', $category) }}" type="button"
                                                         class="btn btn-primary">Show</a>
-                                                    <form method="POST" action="{{ route('category.destroy',$category) }}">
+                                                    <form method="POST"
+                                                        action="{{ route('category.destroy', $category) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <div><button type="button" class="btn btn-danger">Delete</button></div>
+                                                        <div><button type="submit" class="btn btn-danger">Delete</button>
+                                                        </div>
                                                     </form>
-                                                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
-                                                            data-bs-target="#EditCategoryModal-{{ $category->id }}">{{ __('Edit') }}</button>
-                                                        @include('modal.category.edit')
+                                                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                                        data-bs-target="#EditCategoryModal-{{ $category->id }}">{{ __('Edit') }}</button>
+                                                    @include('modal.category.edit')
                                                 </div>
                                             </td>
                                         </tr>
@@ -50,7 +56,6 @@
                                 </tbody>
                             </table>
                         </div>
-
                     </div>
                 </div>
             </div>

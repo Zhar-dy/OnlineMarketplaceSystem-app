@@ -15,6 +15,7 @@ class Category extends Model
         'name',
         'description',
         'uuid',
+        'attachment'
     ];
 
     public function products()
