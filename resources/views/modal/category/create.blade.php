@@ -1,7 +1,7 @@
 {{-- Create category Modal --}}
 <div class="modal fade" id="CreateCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <form action="{{ route('category.store') }}" method="POST">
+        <form action="{{ route('category.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             {{-- <input type="hidden" name="course_id" value="{{ $course->id }}"> --}}
             <div class="modal-content">
@@ -19,6 +19,10 @@
                         <label for="message-text" class="col-form-label fw-bold">Category Description:</label>
                         <textarea class="form-control" name="description" id="message-text" required autocomplete></textarea>
                     </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Default file input example</label>
+                        <input class="form-control" type="file" name="attachment">
+                      </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
