@@ -38,15 +38,16 @@
                                             <form method="POST" action="{{ route('product.destroy', $product) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <div><button type="submit" class="btn btn-outline-danger">Delete</button></div>
+                                                <div><button type="submit" class="btn btn-outline-danger">Delete</button>
+                                                </div>
                                             </form>
-                                            @endif
-                                        @if($product->seller_id != Auth::id() || Auth::user()->role == 'admin')
+                                        @endif
+                                        @if ($product->seller_id != Auth::id() || Auth::user()->role == 'admin')
                                             <a href="{{ route('product.order.create', $product) }}"
                                                 class="btn btn-outline-success">Buy</a>
-                                            <a href="{{ route('review.show', $product) }}"
-                                                class="btn btn-outline-dark">View Review</a>
                                         @endif
+                                        <a href="{{ route('review.show', [$product, $category]) }}"
+                                            class="btn btn-outline-dark">View Review</a>
                                     </div>
                                 </td>
                             </tbody>
