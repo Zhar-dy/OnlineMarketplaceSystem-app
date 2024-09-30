@@ -52,18 +52,10 @@ Route::resource('product.order', OrderController::class)->only([
     'store'
 ]);
 
-//Payment Route
-Route::resource('payment', PaymentController::class)->except([
-    'store'
-]);
-Route::resource('order.payment', PaymentController::class)->only([
-    'store'
-]);
-
 //Shipping Route
 Route::resource('shipping', ShippingController::class);
 //Review Route
-Route::get('/review/show/{product}', [ReviewController::class,'show'])-> name('review.show');
+Route::get('/review/show/{product}/{category}', [ReviewController::class,'show'])-> name('review.show');
 Route::get('/review/create/{order}', [ReviewController::class,'create'])-> name('review.create');
 Route::delete('/review/destroy/{product}/{review}', [ReviewController::class,'destroy'])-> name('review.destroy');
 Route::resource('review', ReviewController::class)->except([
@@ -71,3 +63,15 @@ Route::resource('review', ReviewController::class)->except([
     'show',
     'destroy'
 ]);
+
+
+//Payment Route
+Route::resource('payment', PaymentController::class)->except([
+    'downloadPDF',
+    'store'
+]);
+Route::resource('order.payment', PaymentController::class)->only([
+    'store'
+]);
+//learning pdf stuff
+Route::get('/payment/{payment}',[PaymentController::class, 'downloadPDF'])->name('payment.downloadPDF');
