@@ -7,7 +7,7 @@
                 <div class="card mt-2">
                     <div class="card-header">Show Payments</div>
                     <div class="card-body">
-                        <a href="{{ route('home') }}" button type="button" class="btn btn-outline-danger">Back</button></a>
+                        <a href="{{ route('home') }}" button type="button" class="btn btn-outline-danger">Back</a>
                     </div>
                     <table class="table table-hover">
                         <thead>
@@ -32,10 +32,15 @@
                                     <td>{{ $payment->payment_status }}</td>
                                     <td>{{ $payment->order->status }}</td>
                                     <td>
-                                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                                <a href="{{ route('payment.downloadPDF', $payment) }}" class="btn btn-outline-danger">Download PDF</a>
+                                    @if($payment->order->status != 'Shipped')
+                                        <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal"
                                         data-bs-target="#CreateShippingModal--{{$payment->id}}">{{ __('Ship Now') }}</button>
                                     @include('modal.shipping.create')
-                                    </td>
+                                    @else
+                                    <button type="button" class="btn btn-dark" disabled>{{ __('Shipped') }}</button>
+                                    @endif
+                                </td>
                             </tbody>
                         @endif
                         @endforeach
