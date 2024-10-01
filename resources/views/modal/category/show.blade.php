@@ -10,10 +10,17 @@
                         <a href="{{ route('home') }}" button type="button" class="btn btn-outline-danger">Back</button></a>
                         <a href="{{ route('category.product.create', $category) }}" button type="button"
                             class="btn btn-outline-primary">Add Product</a>
+                        <form action="{{ route('product.import') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file" class="form-control" required>
+                            <button class="btn btn-success">
+                                Import Product Data
+                            </button>
+                        </form>
                         @if ($products->isNotEmpty())
-                        <a class="btn btn-warning" href="{{ route('product.export') }}">
-                            Export Products Data
-                        </a>
+                            <a class="btn btn-warning" href="{{ route('product.export') }}">
+                                Export Products Data
+                            </a>
                         @endif
                     </div>
                     <table class="table table-hover">
