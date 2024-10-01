@@ -12,7 +12,7 @@ class ProductsExport implements FromCollection, WithHeadings
     */
     public function collection()
     {
-        return Product::select('id', 'name', 'description', 'price')->get();
+        return Product::all();
     }
 
     /**
@@ -22,6 +22,6 @@ class ProductsExport implements FromCollection, WithHeadings
      */
     public function headings(): array
     {
-        return ["ID", "Name", "Description", "Price"];
+        return ["ID","Category_ID","Seller_ID", "Name", "Description", "Price","Created_at","Updated_at"];
     }
 }
