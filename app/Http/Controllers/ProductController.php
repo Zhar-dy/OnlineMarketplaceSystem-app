@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ProductsExport;
+use App\Imports\ImportProduct;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -44,10 +45,15 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
     public function export(Request $request){
         return Excel::download(new ProductsExport, 'product.xlsx');
+    }
+    public function import(Request $request){
+        Excel::import(new ImportProduct,
+            $request->file('file')->store('files'));
+        return redirect()->back();
     }
 }
