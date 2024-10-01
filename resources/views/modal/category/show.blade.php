@@ -10,7 +10,11 @@
                         <a href="{{ route('home') }}" button type="button" class="btn btn-outline-danger">Back</button></a>
                         <a href="{{ route('category.product.create', $category) }}" button type="button"
                             class="btn btn-outline-primary">Add Product</a>
-
+                        @if ($products->isNotEmpty())
+                        <a class="btn btn-warning" href="{{ route('product.export') }}">
+                            Export Products Data
+                        </a>
+                        @endif
                     </div>
                     <table class="table table-hover">
                         <thead>
