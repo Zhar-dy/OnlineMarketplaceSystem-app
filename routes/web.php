@@ -25,6 +25,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::middleware(['auth'])->group(function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Category Route
 Route::get('/category/{category:uuid}', [CategoryController::class, 'show'])->name('category.show');
@@ -78,3 +79,5 @@ Route::get('/payment/{payment}',[PaymentController::class, 'downloadPDF'])->name
 //excel stuff
 Route::get('products/export/', [ProductController::class, 'export'])->name('product.export');
 Route::post('/import',[ProductController::class,'import'])->name('product.import');
+
+});
