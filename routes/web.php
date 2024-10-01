@@ -77,5 +77,4 @@ Route::resource('order.payment', PaymentController::class)->only([
 Route::get('/payment/{payment}',[PaymentController::class, 'downloadPDF'])->name('payment.downloadPDF');
 //excel stuff
 Route::get('products/export/', [ProductController::class, 'export'])->name('product.export');
-Route::get('/file-import',[ProductController::class,'importView'])->name('product-view');
 Route::post('/import',[ProductController::class,'import'])->name('product.import');
