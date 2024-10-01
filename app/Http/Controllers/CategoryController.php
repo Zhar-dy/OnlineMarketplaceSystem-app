@@ -21,7 +21,7 @@ class CategoryController extends Controller
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-             'attachment'=>$fileName ?? 'No attachment'
+            'attachment'=>$fileName ?? 'No attachment'
         ]);
         return redirect()->route('home');
     }
