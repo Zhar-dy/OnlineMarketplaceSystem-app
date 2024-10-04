@@ -12,12 +12,6 @@ class CategoryController extends Controller
 {
     public function store(Request $request)
     {
-        if ($request->hasFile('attachment')) {
-            //rename file
-            $fileName = $request->name.'-'.date('Y-m-d').'.'.$request->attachment->getClientOriginalExtension();
-            //simpan gambar file
-            Storage::disk('public')->put('/workspace/'.$fileName, File::get($request->attachment));
-        }
         Category::create([
             'name' => $request->name,
             'description' => $request->description,

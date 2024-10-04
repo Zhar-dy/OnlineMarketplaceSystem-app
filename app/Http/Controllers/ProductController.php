@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -25,10 +26,9 @@ class ProductController extends Controller
             'price' => $request->price,
         ]);
         return redirect()->intended(route('category.show', $category));
-        // view('modal.category.show', compact('category','products'));
     }
 
-    public function edit(Request $request,Category $category,Product $product)
+    public function edit(Category $category,Product $product)
     {
        return view('product.edit',compact('category','product'));
     }
