@@ -32,7 +32,7 @@ Route::get('/category/{category:uuid}', [CategoryController::class, 'show'])->na
 Route::resource('category', CategoryController::class)->except([
     'show'
 ]);
-//Product Route
+//Product Routex
 // Route::get('/product/create/{category}',[ProductController::class,'create'])->name('product.create');
 Route::resource('product', ProductController::class)->except([
     'create',
