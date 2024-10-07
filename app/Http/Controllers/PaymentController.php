@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\PaymentEmail;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Review;
+use Illuminate\Support\Facades\Mail;
 use PDF;
 use Illuminate\Http\Request;
 
@@ -27,6 +29,8 @@ class PaymentController extends Controller
             'payment_status' => $request->payment_status,
             'payment_date' => $request->payment_date
         ]);
+        Mail::to($order->user)->send(new PaymentEmail($order));
+
         return redirect()->route('order.index');
     }
 
