@@ -18,30 +18,30 @@ class UserSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create permissions
-        Permission::create(['name' => 'edit articles']);
-        Permission::create(['name' => 'delete articles']);
-        Permission::create(['name' => 'category-create']);
-
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'customer']);
-        $role1->givePermissionTo('edit articles');
-        $role1->givePermissionTo('delete articles');
+        $role1->givePermissionTo('category-show');
+        // $role1->givePermissionTo('delete articles');
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('category-create');
+        $role2->givePermissionTo([
+            'category-create',
+            'category-edit',
+            'category-delete',
+            'category-show'
+        ]);
 
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'customer',
-            'email' => 'c@example.com',
+            'email' => 'c@gmail.com',
             'password' => Hash::make('1')
         ]);
         $user->assignRole($role1);
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
-            'email' => 'a@example.com',
+            'email' => 'a@gmail.com',
             'password' => Hash::make('1')
         ]);
         $user->assignRole($role2);
