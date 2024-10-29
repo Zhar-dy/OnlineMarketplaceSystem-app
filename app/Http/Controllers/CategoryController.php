@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Http;
-use Storage;
-use File;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CategoryController extends Controller
 {
@@ -16,10 +16,14 @@ class CategoryController extends Controller
         $fileName = 'No attachment'; // Default value for the attachment
 
         if ($request->hasFile('attachment')) {
-                //rename file
-            $fileName = $request->name.'-'.date('Y-m-d').'.'.$request->attachment->getClientOriginalExtension();
-                //simpan gambar file
-            Storage::disk('public')->put('/category/'.$fileName, File::get($request->attachment));
+            // Rename the file
+            $fileName = $request->name . '-' . date('Y-m-d') . '.' . $request->attachment->getClientOriginalExtension();
+
+            // Ensure the 'category' directory exists
+            Storage::disk('public')->makeDirectory('category');
+
+            // Save the file
+            Storage::disk('public')->put('/category/' . $fileName, File::get($request->attachment));
         }
         Category::create([
             'name' => $request->name,
