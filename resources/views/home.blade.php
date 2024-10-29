@@ -6,10 +6,12 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
-                    <div class="card-body">
-                        <button type="button" class="btn btn-dark" data-bs-toggle="modal"
+                    @can('edit articles')
+                    <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                             data-bs-target="#CreateCategoryModal">{{ __('Create Category') }}</button>
                         @include('modal.category.create')
+                    @endcan
+                    <div class="card-body">
                         <a href="{{ route('order.index') }}" class="btn btn-info">View Orders</a>
                         <a href="{{ route('payment.index') }}" type="button" class="btn btn-primary">View Paid Order</a>
                         <div class="card mt-3">
