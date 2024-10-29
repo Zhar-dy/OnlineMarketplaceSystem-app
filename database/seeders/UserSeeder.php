@@ -21,19 +21,15 @@ class UserSeeder extends Seeder
         // create permissions
         Permission::create(['name' => 'edit articles']);
         Permission::create(['name' => 'delete articles']);
-        Permission::create(['name' => 'view articles']);
+        Permission::create(['name' => 'category-create']);
 
         // create roles and assign existing permissions
         $role1 = Role::create(['name' => 'customer']);
         $role1->givePermissionTo('edit articles');
         $role1->givePermissionTo('delete articles');
-        $role1->givePermissionTo('view articles');
 
         $role2 = Role::create(['name' => 'admin']);
-        $role2->givePermissionTo('view articles');
-
-        $role3 = Role::create(['name' => 'Super-Admin']);
-        // gets all permissions via Gate::before rule; see AuthServiceProvider
+        $role2->givePermissionTo('category-create');
 
         // create demo users
         $user = \App\Models\User::factory()->create([

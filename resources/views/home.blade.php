@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
-                    @can('edit articles')
+                    @can('category-create')
                     <button type="button" class="btn btn-dark" data-bs-toggle="modal"
                             data-bs-target="#CreateCategoryModal">{{ __('Create Category') }}</button>
                         @include('modal.category.create')
