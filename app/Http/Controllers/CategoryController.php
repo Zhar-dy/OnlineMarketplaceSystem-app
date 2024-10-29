@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Http;
 use Storage;
 use File;
 
@@ -12,17 +13,26 @@ class CategoryController extends Controller
 {
     public function store(Request $request)
     {
+        $fileName = 'No attachment'; // Default value for the attachment
+
         if ($request->hasFile('attachment')) {
-            //rename file
+                //rename file
             $fileName = $request->name.'-'.date('Y-m-d').'.'.$request->attachment->getClientOriginalExtension();
-            //simpan gambar file
+                //simpan gambar file
             Storage::disk('public')->put('/category/'.$fileName, File::get($request->attachment));
         }
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
-            'attachment'=>$fileName ?? 'No attachment'
+            'attachment'=>$fileName
         ]);
+
+        // $response = Http::post('http://127.0.0.1:8000/api/category/store',[
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'attachment'=>$fileName
+        // ]);
+
         return redirect()->route('home');
     }
 
