@@ -29,7 +29,7 @@
                                             <th scope="row">{{ $key + 1 }}</th>
                                             <td>{{ $category->name }}</td>
                                             <td>
-                                                <img src="{{ asset('storage/workspace/' . $category->attachment) }}" style="width:150px; max-width:150px;" alt="{{ $category->attachment }}">
+                                                <img src="{{ asset('storage/category/' . $category->attachment) }}" style="width:150px; max-width:150px;" alt="{{ $category->attachment }}">
                                             </td>
                                             <td>{{ $category->description }}</td>
                                             {{-- <td>

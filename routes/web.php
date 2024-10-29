@@ -27,12 +27,16 @@ Route::get('/', function () {
 Auth::routes();
 Route::middleware(['auth'])->group(function() {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 //Category Route
 Route::get('/category/{category:uuid}', [CategoryController::class, 'show'])->name('category.show');
 Route::resource('category', CategoryController::class)->except([
     'show'
 ]);
-//Product Routex
+
+
+//Product Route
 // Route::get('/product/create/{category}',[ProductController::class,'create'])->name('product.create');
 Route::resource('product', ProductController::class)->except([
     'create',
