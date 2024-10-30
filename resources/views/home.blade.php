@@ -12,6 +12,7 @@
                 @include('modal.category.create')
                 @endcan
                 <div class="card-body">
+                <a href="{{ route('roles.index') }}" class="btn btn-dark">Create Role</a>
                     <a href="{{ route('order.index') }}" class="btn btn-info">View Orders</a>
                     <a href="{{ route('payment.index') }}" type="button" class="btn btn-primary">View Paid Order</a>
                     <div class="card mt-3">

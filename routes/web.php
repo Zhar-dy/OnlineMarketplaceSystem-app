@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShippingController;
 
 /*
@@ -26,8 +27,8 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::middleware(['auth'])->group(function() {
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/home', action: [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('roles', RoleController::class);
 
 //Category Route
 Route::get('/category/{category:uuid}', [CategoryController::class, 'show'])->name('category.show');
