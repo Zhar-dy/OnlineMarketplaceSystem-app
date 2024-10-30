@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShippingController;
+use App\Http\Controllers\PieChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,4 +86,6 @@ Route::get('/payment/{payment}',[PaymentController::class, 'downloadPDF'])->name
 Route::get('products/export/', [ProductController::class, 'export'])->name('product.export');
 Route::post('/import',[ProductController::class,'import'])->name('product.import');
 
+//add pie chart page
+Route::get('/pie-chart', [PieChartController::class, 'pieChart'])->name('pie-show');
 });
