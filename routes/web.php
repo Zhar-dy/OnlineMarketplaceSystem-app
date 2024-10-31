@@ -32,9 +32,11 @@ Route::get('/home', action: [App\Http\Controllers\HomeController::class, 'index'
 Route::resource('roles', RoleController::class);
 
 //Category Route
+Route::get('category/indexing', [CategoryController::class, 'indexing'])->name('category.indexing');
 Route::get('/category/{category:uuid}', [CategoryController::class, 'show'])->name('category.show');
 Route::resource('category', CategoryController::class)->except([
-    'show'
+    'show',
+    'indexing'
 ]);
 
 

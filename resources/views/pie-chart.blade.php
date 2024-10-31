@@ -3,8 +3,14 @@
 @section('content')
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+
 <body>
     <div style="width: 40%; margin: auto;">
+    <label>Total purchase till 100</label>
+    <div class="progress">
+            <div id="progress-bar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                aria-valuenow="{{ $total }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $total }}%"></div>
+        </div>
         <canvas id="pieChart"></canvas>
         <a href="{{ route('home') }}" class="btn btn-secondary">Back</a>
     </div>
@@ -47,6 +53,7 @@
                 }]
             },
         });
+
     </script>
 </body>
 

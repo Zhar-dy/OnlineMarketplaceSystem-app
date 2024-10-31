@@ -60,4 +60,12 @@ class CategoryController extends Controller
         $products = Product::all();
         return view('modal.category.show', compact('category', 'products'));
     }
+
+    public function indexing(Request $request)
+    {
+        $search = $request->keyword ?? null;
+
+        $categories = Category::search($search)->get();
+        return view('home')->with(compact('categories'));;
+    }
 }

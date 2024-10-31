@@ -18,6 +18,12 @@
                 <a href="{{ route('roles.index') }}" class="btn btn-dark">View Role</a>
                     <a href="{{ route('order.index') }}" class="btn btn-info">View Orders</a>
                     <a href="{{ route('payment.index') }}" type="button" class="btn btn-primary">View Paid Order</a>
+                    <form method="GET" action="{{ route('category.indexing') }}">
+                        <div>
+                            <input type="text" name="keyword" class="form-control form-control-solid w-300px ps-13" placeholder="Search"/>
+                            <button class="btn btn-primary" type="submit">submit</button>
+                        </div>
+                    </form>
                     <div class="card mt-3">
                         <table class="table table-hover">
                             <thead>

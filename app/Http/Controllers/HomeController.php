@@ -27,6 +27,7 @@ class HomeController extends Controller
     {
         $orders = Order::all();
         $categories = Category::all();
+        
         return view('home',compact('categories','orders'));
     }
 }

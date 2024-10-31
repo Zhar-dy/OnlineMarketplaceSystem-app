@@ -9,8 +9,16 @@
 
     <title>Online Marketplace System</title>
 
-    <!-- add chart.js  -->
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include Select2 CSS CDN -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+
+    <!-- Include jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include Select2 JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
