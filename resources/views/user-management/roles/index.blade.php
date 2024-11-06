@@ -6,10 +6,12 @@
         <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
             <h4 class="mb-0">Roles List</h4>
             <a href="{{ route('roles.create') }}" class="btn btn-light btn-sm text-primary">Add New Role</a>
+            <a href="{{ route('permission.index') }}" class="btn btn-dark">View List of Permission</a>
+            <a href="{{ route('home') }}" class="btn btn-light btn-active-light-primary">Back</a>
         </div>
         <div class="card-body py-4">
             <!--begin::Table-->
-            <div class="table-responsive">
+            <div class="table">
                 <table class="table table-row-dashed table-hover table-striped">
                     <thead>
                         <tr class="text-start text-muted fw-bold fs-7 text-uppercase">
@@ -33,14 +35,7 @@
                                             <a href="{{ route('roles.show', $role->id) }}" class="dropdown-item">Show</a>
                                         </li>
                                             <li>
-                                                <a href="{{ route('roles.edit', $role->id) }}" class="dropdown-item">Edit</a>
-                                            </li>
-                                            <li>
-                                                <form action="{{ route('roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this role?');" style="display: inline;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item text-danger">Delete</button>
-                                                </form>
+                                                <a href="{{ route('roles.edit', $role) }}" class="dropdown-item">Edit</a>
                                             </li>
                                     </ul>
                                 </div>
