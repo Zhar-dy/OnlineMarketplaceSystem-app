@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\PieChartController;
+use App\Http\Controllers\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,4 +91,10 @@ Route::post('/import',[ProductController::class,'import'])->name('product.import
 
 //add pie chart page
 Route::get('/pie-chart', [PieChartController::class, 'pieChart'])->name('pie-show');
+
+// adding permission page
+Route::get('permission',[PermissionController::class, 'index'])->name('permission.index');
+Route::get('/permission/create',[PermissionController::class, 'create'])->name('permission.create');
+Route::post('permission',[PermissionController::class, 'store'])->name('permission.store');
+Route::delete('permission/delete',[PermissionController::class, 'batchDelete'])->name('permission.batchDelete');
 });
