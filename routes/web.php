@@ -43,9 +43,11 @@ Route::resource('category', CategoryController::class)->except([
 
 //Product Route
 // Route::get('/product/create/{category}',[ProductController::class,'create'])->name('product.create');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.show');
 Route::resource('product', ProductController::class)->except([
     'create',
     'store',
+    'show'
 ]);
 Route::resource('category.product', ProductController::class)->only([
     'create',

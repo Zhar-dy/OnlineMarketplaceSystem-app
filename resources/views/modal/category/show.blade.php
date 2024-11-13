@@ -43,6 +43,8 @@
                                 <td>RM{{ $product->price }}</td>
                                 <td>
                                     <div class="btn-group" role="group" aria-label="Basic example">
+                                        <!-- show button -->
+                                         <a href="{{ route('product.show', $product) }}" class="btn btn-sm btn">show</a>
                                         @if ($product->seller_id == Auth::id() || Auth::user()->role == 'admin')
                                             <a href="{{ route('product.edit', $product) }}" type="button"
                                                 class="btn btn-outline-dark">Edit</a>

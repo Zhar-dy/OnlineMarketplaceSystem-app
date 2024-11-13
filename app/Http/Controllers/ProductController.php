@@ -56,4 +56,10 @@ class ProductController extends Controller
             $request->file('file')->store('files'));
         return redirect()->back();
     }
+
+    //show function
+    public function show(Product $product)
+    {
+        return view('product.show', compact('product'));
+        }
 }
