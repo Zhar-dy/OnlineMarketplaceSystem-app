@@ -28,6 +28,7 @@ class Category extends Model
         $query->where(function ($query2) use ($search){
             if ($search){
                 $query2->where('name' , 'LIKE' , '%' . $search . '%');
+                $query2->orWhere('description', 'LIKE' , '%' . $search . '%');
             }
             return $query2;
         });
