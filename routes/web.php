@@ -28,7 +28,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Route::middleware(['auth'])->group(function() {
 Route::get('/home', action: [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('roles', RoleController::class);
 
@@ -99,4 +98,3 @@ Route::get('permission',[PermissionController::class, 'index'])->name('permissio
 Route::get('/permission/create',[PermissionController::class, 'create'])->name('permission.create');
 Route::post('permission',[PermissionController::class, 'store'])->name('permission.store');
 Route::delete('permission/delete',[PermissionController::class, 'batchDelete'])->name('permission.batchDelete');
-});
